@@ -45,6 +45,8 @@ struct SupportView: View {
 
                     TryThisLinkCard()
 
+                    NotMedicalCard()
+
                     Text("You can also talk to a parent, school counselor, teacher, coach, or doctor you trust.")
                         .font(.body)
                         .foregroundStyle(Color.inkSoft)
@@ -101,6 +103,25 @@ private struct TryThisLinkCard: View {
             .buttonStyle(BigButtonStyle())
         }
         .card(.calmTealSoft)
+    }
+}
+
+/// A clear statement of what Valence is and isn't.
+private struct NotMedicalCard: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Valence is not a medical tool", systemImage: "info.circle")
+                .font(.title3.bold())
+                .accessibilityAddTraits(.isHeader)
+            Text("Valence does not diagnose any condition, and it can't tell you whether you have a mental health problem. It's a tool for noticing and naming your feelings, not a replacement for a doctor, counselor, therapist, or emergency help.")
+                .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
+            Text("If you're worried about how you've been feeling, please talk to a trusted adult or a health professional.")
+                .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .card()
+        .accessibilityElement(children: .combine)
     }
 }
 

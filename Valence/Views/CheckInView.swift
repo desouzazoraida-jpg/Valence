@@ -14,6 +14,8 @@ struct CheckInView: View {
     @State private var setting: CheckInSetting?
     @State private var note = ""
     @State private var showSavedMessage = false
+    /// The quadrant of the check-in just saved. Setting it opens the "Try This" strategy sheet.
+    @State private var strategyQuadrant: MoodQuadrant?
     @FocusState private var noteIsFocused: Bool
 
     /// The 6 words that match where the spot is right now.
@@ -61,6 +63,11 @@ struct CheckInView: View {
             }
             .navigationTitle("Check In")
             .valenceScreen()
+            // After saving, show one short strategy that matches the quadrant.
+            .sheet(item: $strategyQuadrant) { quadrant in
+                CheckInStrategySheet(quadrant: quadrant)
+                    .presentationDetents([.large])
+            }
             // If the spot moves and the chosen word no longer fits, clear it.
             // Hide the "Saved" message once a new check-in starts.
             .onChange(of: point) { _, newPoint in
@@ -171,6 +178,7 @@ struct CheckInView: View {
 
     private func save() {
         guard let point, let feeling, let setting else { return }
+        let savedQuadrant = point.quadrant
         let checkIn = CheckIn(valence: point.valence,
                               arousal: point.arousal,
                               feeling: feeling.word,
@@ -188,6 +196,7 @@ struct CheckInView: View {
         withAnimation { showSavedMessage = true }
         // Tells VoiceOver users the save worked.
         AccessibilityNotification.Announcement("Check-in saved").post()
+        strategyQuadrant = savedQuadrant
     }
 }
 
