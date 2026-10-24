@@ -37,6 +37,24 @@ struct TryThisView: View {
                                  detail: "Tense one part of your body, then let it go, to feel the difference.")
                     }
 
+                    NavigationLink {
+                        RoseThornBudView()
+                    } label: {
+                        ToolCard(symbol: "camera.macro",
+                                 title: "Rose, Thorn, Bud",
+                                 time: "About 3 minutes",
+                                 detail: "Look back on your day: something good, something hard, and something you're looking forward to.")
+                    }
+
+                    NavigationLink {
+                        GratitudeView()
+                    } label: {
+                        ToolCard(symbol: "heart.text.square",
+                                 title: "Three good things",
+                                 time: "About 2 minutes",
+                                 detail: "Name three things you're grateful for, from small moments to people you care about.")
+                    }
+
                     Text("If you're having a really hard time, the Support tab has people you can reach any time.")
                         .font(.footnote)
                         .foregroundStyle(Color.inkSoft)
