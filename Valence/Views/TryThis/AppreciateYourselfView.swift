@@ -1,9 +1,9 @@
 import SwiftUI
 
-/// Three good things: name three things you're grateful for, one at a time.
-/// Each step gives a different kind of thing to look for, so it's easier to think of one.
+/// Appreciate yourself: name three good things about yourself, one at a time.
+/// Each step asks about a different kind of thing, so it's easier to think of one.
 /// Writing is optional, and nothing typed here is saved.
-struct GratitudeView: View {
+struct AppreciateYourselfView: View {
     private struct Step {
         let question: String
         let symbol: String
@@ -11,15 +11,15 @@ struct GratitudeView: View {
     }
 
     private let steps = [
-        Step(question: "Something small that made today a bit better",
-             symbol: "cup.and.saucer",
-             hint: "A good snack, sunshine, a funny video, your favorite hoodie."),
-        Step(question: "A person you're thankful for",
-             symbol: "person.2",
-             hint: "A friend, family member, teacher, coach, or even a pet."),
-        Step(question: "Something about yourself you appreciate",
-             symbol: "heart",
-             hint: "Something you did, tried, or are getting better at."),
+        Step(question: "Something you did well today",
+             symbol: "star",
+             hint: "Big or small. Finishing homework, helping someone, or just getting through a hard day."),
+        Step(question: "A strength you have",
+             symbol: "hand.thumbsup",
+             hint: "Being funny, loyal, creative, a good listener, or someone who doesn't give up."),
+        Step(question: "Something you're getting better at",
+             symbol: "chart.line.uptrend.xyaxis",
+             hint: "A skill, a class, a sport, or handling something that used to be hard."),
     ]
 
     @State private var stepIndex = 0
@@ -40,7 +40,7 @@ struct GratitudeView: View {
             .padding(20)
         }
         .scrollDismissesKeyboard(.interactively)
-        .navigationTitle("Three good things")
+        .navigationTitle("Appreciate yourself")
         .navigationBarTitleDisplayMode(.inline)
         .valenceScreen()
         .sensoryFeedback(.selection, trigger: stepIndex)
@@ -109,7 +109,7 @@ struct GratitudeView: View {
                 .font(.system(size: 64))
                 .foregroundStyle(Color.brand)
                 .accessibilityHidden(true)
-            Text("Three good things")
+            Text("Look at you")
                 .font(.title.bold())
 
             // Show back whatever was written, as a short list.
@@ -126,7 +126,7 @@ struct GratitudeView: View {
                 .card()
             }
 
-            Text("Taking a moment to notice good things, even small ones, can help you feel a little lighter. Try it again tomorrow with three new ones.")
+            Text("Try talking to yourself the way you'd talk to a good friend. You deserve that kindness too.")
                 .font(.body)
                 .multilineTextAlignment(.center)
             Button("Start over") {
@@ -143,7 +143,7 @@ struct GratitudeView: View {
 
 #Preview {
     NavigationStack {
-        GratitudeView()
+        AppreciateYourselfView()
     }
     .environment(AppState())
 }
