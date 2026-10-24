@@ -29,6 +29,9 @@ struct WelcomeView: View {
                     WelcomeRow(symbol: "chart.line.uptrend.xyaxis",
                                title: "Spot patterns",
                                text: "See how your days connect over time, so you can learn what helps you.")
+                    WelcomeRow(symbol: "wind",
+                               title: "Try something calming",
+                               text: "Short guided breathing, grounding, and squeeze-and-release.")
                     WelcomeRow(symbol: "brain.head.profile",
                                title: "Learn the science",
                                text: "Short, simple explanations of why naming your feelings actually works.")

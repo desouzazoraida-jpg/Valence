@@ -26,6 +26,7 @@ struct PatternsView: View {
                     if showsShiftMessage && !hidShiftMessage {
                         Section {
                             ShiftMessageCard(
+                                openTryThis: { appState.selectedTab = .tryThis },
                                 openSupport: { appState.selectedTab = .support },
                                 hide: { withAnimation { hidShiftMessage = true } })
                         }
@@ -194,6 +195,7 @@ struct PatternsView: View {
 
 /// A kind note shown when recent check-ins dip below someone's usual.
 private struct ShiftMessageCard: View {
+    let openTryThis: () -> Void
     let openSupport: () -> Void
     let hide: () -> Void
 
@@ -207,12 +209,15 @@ private struct ShiftMessageCard: View {
                 .font(.body)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Text("Taking a slow minute with the 5-4-3-2-1 grounding exercise might help, and so can talking with someone you trust. Both are on the Support tab whenever you want them.")
+            Text("A few minutes of slow breathing or grounding on the Try This tab might help. Talking with someone you trust can help too, and the Support tab has people ready to listen anytime.")
                 .font(.body)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Button("Open calming tools and support", action: openSupport)
+            Button("Try a calming tool", action: openTryThis)
                 .buttonStyle(BigButtonStyle())
+
+            Button("See who I can talk to", action: openSupport)
+                .buttonStyle(BigButtonStyle(background: .card, foreground: .brand))
 
             Button("Not right now", action: hide)
                 .font(.body.weight(.semibold))

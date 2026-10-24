@@ -1,8 +1,8 @@
 import SwiftUI
 
-/// The four tabs at the bottom of the screen.
+/// The five tabs at the bottom of the screen.
 enum AppTab: Hashable {
-    case checkIn, patterns, science, support
+    case checkIn, patterns, tryThis, science, support
 }
 
 /// Shared app-wide information. Any screen can read or change it,

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The tab bar that holds the app's four main screens.
+/// The tab bar that holds the app's five main screens.
 struct RootTabView: View {
     @Environment(AppState.self) private var appState
     // @AppStorage remembers a small value even after the app closes.
@@ -18,6 +18,10 @@ struct RootTabView: View {
             PatternsView()
                 .tabItem { Label("Patterns", systemImage: "chart.line.uptrend.xyaxis") }
                 .tag(AppTab.patterns)
+
+            TryThisView()
+                .tabItem { Label("Try This", systemImage: "wind") }
+                .tag(AppTab.tryThis)
 
             ScienceView()
                 .tabItem { Label("Science", systemImage: "brain.head.profile") }

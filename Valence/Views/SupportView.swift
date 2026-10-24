@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Real people you can reach right away, plus a calming exercise.
+/// Real people you can reach right away, plus a link to calming tools.
 /// The "Need help now?" button on every other screen opens this tab.
 struct SupportView: View {
     var body: some View {
@@ -43,7 +43,7 @@ struct SupportView: View {
                             ("Text START to 678-678", "message.fill", "sms:678678&body=START"),
                         ])
 
-                    GroundingCard()
+                    TryThisLinkCard()
 
                     Text("You can also talk to a parent, school counselor, teacher, coach, or doctor you trust.")
                         .font(.body)
@@ -84,32 +84,21 @@ private struct ResourceCard: View {
     }
 }
 
-/// The 5-4-3-2-1 grounding exercise, a simple way to calm down using your senses.
-private struct GroundingCard: View {
-    private let steps = [
-        ("5", "things you can see"),
-        ("4", "things you can feel"),
-        ("3", "things you can hear"),
-        ("2", "things you can smell"),
-        ("1", "thing you can taste"),
-    ]
+/// Points to the calming tools on the Try This tab.
+private struct TryThisLinkCard: View {
+    @Environment(AppState.self) private var appState
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Try 5-4-3-2-1 grounding", systemImage: "leaf")
+            Label("Need a moment to calm down?", systemImage: "wind")
                 .font(.title3.bold())
-            Text("Slowly notice:")
+            Text("Slow breathing, grounding, and squeeze-and-release can help your body settle in a few minutes.")
                 .font(.body)
-            ForEach(steps, id: \.0) { step in
-                HStack(spacing: 12) {
-                    Text(step.0)
-                        .font(.title3.bold())
-                        .frame(minWidth: 36, minHeight: 36)
-                        .background(Color.brandSoft, in: Circle())
-                    Text(step.1).font(.body)
-                }
-                .accessibilityElement(children: .combine)
+                .fixedSize(horizontal: false, vertical: true)
+            Button("Open Try This") {
+                appState.selectedTab = .tryThis
             }
+            .buttonStyle(BigButtonStyle())
         }
         .card(.calmTealSoft)
     }
