@@ -60,7 +60,7 @@ struct ScienceSection: Identifiable {
         ]),
         ScienceSection(symbol: "waveform.path.ecg", title: "The research behind Valence", cards: [
             Card(heading: "My research paper",
-                 body: "**CRD: Causal Representational Disentanglement with Cross-Environment Supervised Contrastive Learning for EEG-Based Emotion Recognition**, by Zoraida D'Souza and Shresth Gupta."),
+                 body: "**CRD: Causal Representational Disentanglement with Cross-Environment Supervised Contrastive Learning for EEG-Based Emotion Recognition**, by Zoraida de Souza."),
             Card(heading: "The question",
                  body: "Computers can guess emotions from brainwaves (EEG) with very high accuracy. But they can take shortcuts: they may learn patterns that belong to one person or one recording session instead of the emotion itself. Then they may not work as well in a new setting. The paper asks how to find emotion signals that stay true across different **environments**."),
             Card(heading: "The idea",
